@@ -4,6 +4,7 @@
 namespace App\Traits;
 
 
+use App\Http\Resources\Frontend\UserResource;
 use Illuminate\Support\Facades\Auth;
 
 trait Response
@@ -33,7 +34,7 @@ trait Response
     {
         return $this->response([
             'access_token' => $token,
-            'user' => Auth::user(),
+            'user' => !is_null(Auth::user()) ? new UserResource(Auth::user()) : null,
             'time_expired' => Auth::factory()->getTTL() * 60,
         ]);
     }

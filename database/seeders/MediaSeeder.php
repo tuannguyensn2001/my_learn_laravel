@@ -22,6 +22,13 @@ class MediaSeeder extends Seeder
                 'type' => 'png',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'saitama',
+                'path' => 'https://scontent.fhan5-2.fna.fbcdn.net/v/t1.6435-9/206456407_2902913926642881_1938351864490439175_n.jpg?_nc_cat=110&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=wNjK9IH79LAAX-4Zv0Q&_nc_ht=scontent.fhan5-2.fna&oh=14a27c89bee02e21b25f3e8f116d3c80&oe=613A0837',
+                'type' => 'png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ]);
     }
