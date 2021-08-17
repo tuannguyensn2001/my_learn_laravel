@@ -26,10 +26,17 @@ Route::group(['prefix' => '/v1/backend'], function () {
 
 });
 
+Route::get('/test', function () {
+    broadcast(new \App\Events\CommentLessonEvent());
+//    return response()->json([1]);
+});
+
 Route::group(['prefix' => '/v1'], function () {
     Route::get('/courses', [\App\Http\Controllers\Frontend\CourseController::class, 'index']);
     Route::get('/course/{slug}', [\App\Http\Controllers\Frontend\CourseController::class, 'show']);
     Route::get('/lesson/show/{course}/{lesson}', [\App\Http\Controllers\Frontend\LessonController::class, 'show']);
+
+    Route::get('/tags', [\App\Http\Controllers\Frontend\TagController::class, 'index']);
 
     Route::post('/auth/login', [\App\Http\Controllers\Frontend\AuthController::class, 'login']);
 

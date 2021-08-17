@@ -26,7 +26,7 @@ class CourseService implements CourseServiceInterface
 
     public function handleGetCourses()
     {
-        return Course::all();
+        return Course::with('tag', 'media', 'tag.category')->get();
     }
 
 

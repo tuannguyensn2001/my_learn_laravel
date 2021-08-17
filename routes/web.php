@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    \Illuminate\Support\Facades\Redis::set('name', 'Tuan');
+
     return view('welcome');
 });
 

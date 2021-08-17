@@ -20,10 +20,11 @@ class CourseController extends Controller
         $this->service = $courseService;
     }
 
-    public function index(): JsonResponse
+    public function index()
     {
         try {
             $result = $this->service->handleGetCourses();
+
 
             return $this->response([
                 'data' => CourseResource::collection($result),
