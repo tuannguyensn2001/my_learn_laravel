@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
+/**
+ * @method static create(array $course)
+ * @method static find($id)
+ */
 class Course extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 
     public function media(): BelongsTo
     {

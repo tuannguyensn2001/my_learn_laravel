@@ -9,6 +9,7 @@ use App\Defines\Status;
 use App\Exceptions\EntityNotFoundException;
 use App\Models\Course;
 use App\Models\Tag;
+use Illuminate\Database\QueryException;
 
 class CourseService implements CourseServiceInterface
 {
@@ -51,5 +52,14 @@ class CourseService implements CourseServiceInterface
         ]);
 
         return $course;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function handleCreateCourseBE(array $course)
+    {
+        $course['media_id'] = 1;
+        return Course::create($course);
     }
 }

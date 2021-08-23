@@ -6,17 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+
 </head>
 <body>
 
-<form action="/upload" method="POST" enctype="multipart/form-data">
-    @csrf
 
-    <input type="file" name="file">
+<div id="root">
 
-    <button type="submit">Submit</button>
+</div>
 
-</form>
-
+<script src="{{asset('/js/main.js')}}"></script>
 </body>
 </html>

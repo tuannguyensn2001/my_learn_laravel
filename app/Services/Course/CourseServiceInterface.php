@@ -11,4 +11,6 @@ interface CourseServiceInterface
     public function handleGetCourses();
 
     public function handleShowCourseFE(string $slug);
+
+    public function handleCreateCourseBE(array $course);
 }

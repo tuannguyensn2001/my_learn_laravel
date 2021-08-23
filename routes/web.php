@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    \Illuminate\Support\Facades\Redis::set('name', 'Tuan');
+Route::get('/{any}', function () {
 
     return view('welcome');
-});
+})->where('any', '.*');
 
-Route::post('/upload', [\App\Http\Controllers\MediaController::class, 'upload']);
+//Route::post('/upload', [\App\Http\Controllers\MediaController::class, 'upload']);
