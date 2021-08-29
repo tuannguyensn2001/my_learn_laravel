@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property mixed|string name
  * @property mixed|string email
  * @property mixed password
+ * @method static find($user_id)
  */
 class User extends Authenticatable implements JWTSubject
 {
@@ -52,13 +53,21 @@ class User extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
 
-    public function profile()
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function classrooms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Classroom::class, 'classroom_user', 'user_id', 'classroom_id')
+            ->withTimestamps()
+            ->withPivot('role', 'status');
+    }
+
 }

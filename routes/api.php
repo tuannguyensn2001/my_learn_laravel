@@ -49,7 +49,15 @@ Route::group(['prefix' => '/v1'], function () {
     Route::group(['middleware' => 'jwt_frontend'], function () {
         Route::get('/auth/me', [\App\Http\Controllers\Frontend\AuthController::class, 'me']);
 
-        Route::post('/classrooms', [\App\Http\Controllers\Frontend\ClassroomController::class, 'store']);
+
+        Route::group(['prefix' => 'classrooms'], function () {
+            Route::get('/', [\App\Http\Controllers\Frontend\ClassroomController::class, 'index']);
+            Route::post('/', [\App\Http\Controllers\Frontend\ClassroomController::class, 'store']);
+            Route::post('/{id}/join', [\App\Http\Controllers\Frontend\ClassroomController::class, 'join']);
+            Route::get('/{id}', [\App\Http\Controllers\Frontend\ClassroomController::class, 'show']);
+            Route::get('/{id}/users', [\App\Http\Controllers\Frontend\ClassroomController::class, 'getUsers']);
+            Route::put('/{classroom_id}/approve/{user_id}', [\App\Http\Controllers\Frontend\ClassroomController::class, 'approveUser']);
+        });
 
     });
 });
