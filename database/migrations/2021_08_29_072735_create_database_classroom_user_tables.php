@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMediaTable extends Migration
+class CreateDatabaseClassroomUserTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('database_classroom_user_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('path');
-            $table->string('type');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +26,6 @@ class CreateMediaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('database_classroom_user_tables');
     }
 }
