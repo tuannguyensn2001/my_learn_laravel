@@ -28,6 +28,7 @@ Route::group(['prefix' => '/backend/v1'], function () {
     Route::post('/courses', [\App\Http\Controllers\Backend\CourseController::class, 'store']);
 //    Route::get('/lessons/{course_id}', [\App\Http\Controllers\Backend\LessonController::class, 'show']);
 
+
 });
 
 Route::get('/test', function () {
@@ -47,5 +48,8 @@ Route::group(['prefix' => '/v1'], function () {
     Route::get('/auth/refresh', [\App\Http\Controllers\Frontend\AuthController::class, 'refresh']);
     Route::group(['middleware' => 'jwt_frontend'], function () {
         Route::get('/auth/me', [\App\Http\Controllers\Frontend\AuthController::class, 'me']);
+
+        Route::post('/classrooms', [\App\Http\Controllers\Frontend\ClassroomController::class, 'store']);
+
     });
 });

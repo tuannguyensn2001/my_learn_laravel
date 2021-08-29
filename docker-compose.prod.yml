@@ -1,0 +1,35 @@
+version: '3'
+
+networks: 
+  laravel:
+
+services: 
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports: 
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks: 
+      - laravel
+  php:
+    build: 
+      context: ./docker/php
+      dockerfile: dockerfile
+    container_name: php
+    volumes: 
+      - ./:/var/www/html
+    ports: 
+      - '9000:9000'
+    networks: 
+      - laravel
+  composer:
+    image: composer
+    working_dir: /var/www/html
+    volumes: 
+      - ./:/var/www/html
+    networks: 
+      - laravel
+    container_name: composer
