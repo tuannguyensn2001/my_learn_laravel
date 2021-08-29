@@ -22,8 +22,9 @@ Route::group(['prefix' => '/backend/v1'], function () {
 
     Route::post('/upload', [\App\Http\Controllers\Backend\UploadController::class, 'upload']);
 
-    Route::get('/courses/{id}', [\App\Http\Controllers\Backend\CourseController::class, 'show']);
     Route::get('/courses/create', [\App\Http\Controllers\Backend\CourseController::class, 'create']);
+    Route::get('/courses/{id}', [\App\Http\Controllers\Backend\CourseController::class, 'show']);
+
     Route::post('/courses', [\App\Http\Controllers\Backend\CourseController::class, 'store']);
 //    Route::get('/lessons/{course_id}', [\App\Http\Controllers\Backend\LessonController::class, 'show']);
 

@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/upload', function (\Illuminate\Http\Request $request) {
+
+    $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
+    dd($uploadedFileUrl);
+})->name('upload');
+
 Route::get('/{any}', function () {
 
     return view('welcome');

@@ -26,8 +26,10 @@ class CourseController extends Controller
     public function create(): \Illuminate\Http\JsonResponse
     {
 
+
         try {
             $data = $this->service->getDataForCreate();
+
 
             return $this->response([
                 'message' => trans('message.fetch_data_success'),
@@ -61,6 +63,8 @@ class CourseController extends Controller
     {
 
         $result = Course::find($id);
+
+        if (!$result) return $this->responseErrorBadRequest('Không tồn tại khóa học này');
 
         if (\request()->has('_lessons') && boolval(\request()->query('_lessons'))) {
             $result = $result->load(

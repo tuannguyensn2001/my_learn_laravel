@@ -12,9 +12,15 @@
 <body>
 
 
-<div id="root">
-
-</div>
+{{--<div id="root">--}}
+{{--    --}}
+{{--</div>--}}
+<form action="{{route('upload')}}" method="post" enctype="multipart/form-data">
+    @csrf
+    <input type="text" name="hi">
+    <input name="file" type="file">
+    <button type="submit">Upload</button>
+</form>
 
 <script src="{{asset('/js/main.js')}}"></script>
 </body>
